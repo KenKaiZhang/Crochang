@@ -1,0 +1,12 @@
+GET http://localhost:9000/checkout
+
+###
+
+POST http://localhost:9000/checkout
+Content-Type: application/json
+
+{
+    "name": "llama",
+    "qty": 1,
+    "cost": 10
+}

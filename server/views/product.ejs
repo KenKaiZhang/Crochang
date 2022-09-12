@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>Crochang</title>
+    <script src="https://kit.fontawesome.com/c619b5aeec.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>   
+
+<body>
+    <section id="header">
+        <a href="#"><p class="logo">LOGO</p></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a class="active" href="shop">Shop</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="checkout"><i class="fa-solid fa-cart-arrow-down fa-lg"></i></a></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="selected-product">
+        <div class="content">
+            <div class="product-image"></div>
+            <div class="product-summary">
+                <h1><%= product.name%></h1>
+                <h4>$<%= product.price%></h4>
+                <button onclick="addToCart()">ADD TO CART</button>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="description-accordian">
+        <button class="description">Description</button>
+        <div class="panel">
+            <p><%= product.description%></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="col">
+            <h4>Contact</h4>
+            <p><b>Phone:</b> (XXX) XXX - XXXX</p>
+            <p><b>Email:</b> XXXXXXXXXX@gmail.com</p>
+            <p><b>Hours:</b> 10:00 - 18:00, Sat-Sun</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+var acc = document.getElementsByClassName("description");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("activate");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+};
+
+function addToCart() {
+    var name = "<%= product.name%>";
+    var item_id = "<%= product._id%>";
+    var price = "<%= product.price%>";
+
+    console.log(name);
+    console.log(item_id);
+    console.log(price);
+
+    fetch('http://localhost:9000/checkout', {
+        method: "POST",
+        cache: "no-cache",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({
+            name: "HELLO",
+            cost: price,
+            item_id: item_id
+        })
+    });
+};
+</script>
+
+</html>

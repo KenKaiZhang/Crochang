@@ -1,0 +1,56 @@
+GET http://localhost:9000/shop
+
+###
+
+POST http://localhost:9000/shop
+Content-Type: application/json
+
+{
+    "name": "llama",
+    "description": "it is purple",
+    "price": 15.00
+}
+
+###
+
+POST http://localhost:9000/shop/
+Content-Type: application/json
+
+{
+    "name": "llama",
+    "description": "it is red",
+    "price": 10.00
+}
+
+###
+
+POST http://localhost:9000/shop
+Content-Type: application/json
+
+{
+    "name": "llama",
+    "description": "it is green",
+    "price": 15.00
+}
+
+###
+
+POST http://localhost:9000/shop
+Content-Type: application/json
+
+{
+    "name": "llama",
+    "description": "it is blue",
+    "price": 15.00
+}
+
+###
+
+POST http://localhost:9000/shop
+Content-Type: application/json
+
+{
+    "name": "llama",
+    "description": "it is yellow",
+    "price": 15.00
+}
